@@ -5,6 +5,8 @@ function App() {
   const queryRef = useRef('');
   const [tableData, setTableData] = useState([]);
   const [tableHeaders, setTableHeaders] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
   const URL = `http://54.200.226.251:3030/sample/query`;
 
   const handleQuery = async (e) => {
@@ -34,6 +36,7 @@ function App() {
         const data = await res.json();
         setTableHeaders(data.head.vars);
         setTableData(data.results.bindings);
+        setCurrentPage(1); 
       } else {
         setTableHeaders([]);
         setTableData([]);
@@ -42,13 +45,17 @@ function App() {
       setTableHeaders([]);
       setTableData([]);
     }
-
   };
 
   const renderTable = () => {
     if (tableHeaders.length === 0) {
       return null;
     }
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    const displayedData = tableData.slice(startIndex, endIndex);
 
     return (
       <table>
@@ -60,7 +67,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {tableData.map((row, rowIndex) => (
+          {displayedData.map((row, rowIndex) => (
             <tr key={rowIndex}>
               {tableHeaders.map((header, headerIndex) => (
                 <td key={headerIndex}>{row[header]?.value}</td>
@@ -72,10 +79,36 @@ function App() {
     );
   };
 
+  const renderPagination = () => {
+    const totalPages = Math.ceil(tableData.length / itemsPerPage);
+
+    if (totalPages <= 1) {
+      return null;
+    }
+
+    return (
+      <div>
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage(currentPage - 1)}
+        >
+          Previous
+        </button>
+        <span>{`Page ${currentPage} of ${totalPages}`}</span>
+        <button
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage(currentPage + 1)}
+        >
+          Next
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div className="container">
       <div>
-        <form onSubmit={handleQuery}>
+        <form className="custom-form" onSubmit={handleQuery}>
           <textarea
             className="custom-textarea"
             ref={queryRef}
@@ -88,9 +121,10 @@ function App() {
           </button>
         </form>
 
-        <div>
+        <div className="table-container">
           <h2>Result:</h2>
           {renderTable()}
+          {renderPagination()}
         </div>
       </div>
     </div>
