@@ -50,7 +50,7 @@ body {
   cursor: pointer;
   outline: none;
   transition: background-color 0.3s;
-  width: 20%;
+  width: 200px;
 }
 
 .custom-button:hover {

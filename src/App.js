@@ -54,7 +54,6 @@ function App() {
 
   const handleQuery = async (e, query) => {
     e.preventDefault();
-    queryRef.current.value = query;
 
     const queryFinal = { query: query };
 
@@ -92,7 +91,7 @@ function App() {
 
   const renderQueryButtons = () => {
     return queries.map((query, index) => (
-      <button key={index} onClick={(e) => handleQuery(e, query)}>
+      <button key={index} onClick={(e) => queryRef.current.value = query}>
         Query {index + 1}
       </button>
     ));
@@ -160,6 +159,10 @@ function App() {
     <div className="container">
       <div>
         <h1 className="title">Homicide Tracker and Analyzer</h1>
+        <div className="query-buttons">
+          {renderQueryButtons()}
+        </div>
+        <p/>
         <form className="custom-form" onSubmit={(e) => handleQuery(e, queryRef.current.value)}>
           <textarea
             className="custom-textarea"
@@ -169,13 +172,11 @@ function App() {
           ></textarea>
 
           <button type="submit" className="custom-button">
-            Submit
+            Run
           </button>
         </form>
 
-        <div className="query-buttons">
-          {renderQueryButtons()}
-        </div>
+        
 
         <div className="table-container">
           <h2>Result:</h2>
