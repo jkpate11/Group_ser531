@@ -108,6 +108,7 @@ function App() {
   return (
     <div className="container">
       <div>
+      <h1 className="title">Homicide Tracker and Analyzer</h1>
         <form className="custom-form" onSubmit={handleQuery}>
           <textarea
             className="custom-textarea"
