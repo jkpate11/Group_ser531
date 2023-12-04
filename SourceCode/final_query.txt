@@ -1,0 +1,64 @@
+Write a sparql query which gives count of gun used as weapon type.
+
+PREFIX homicide: <http://www.semanticweb.org/dvadher1/ontologies/2023/10/homicide-tracker-and-analyser#>
+
+SELECT (COUNT(?offender) AS ?numGuns)
+WHERE {
+  ?offender a homicide:Offender ;
+             homicide:hasWeapon ?weapon .
+  FILTER(?weapon = 11 || ?weapon = 12 || ?weapon = 13 || ?weapon = 14 || ?weapon = 15) 
+}
+
+------------------------------------------------------------------------------------
+Find number of homicides that involved multiple victims and single offenders?
+
+PREFIX homicide: <http://www.semanticweb.org/dvadher1/ontologies/2023/10/homicide-tracker-and-analyser#>
+
+SELECT ?incident ?offender ?victim
+WHERE {
+  ?incident a homicide:Incident ;
+             homicide:hasHomMult ?homMult .
+  FILTER(str(?homMult) = "D")
+  
+  ?incident homicide:involvesOffender ?offender .
+  ?incident homicide:involvesVictim ?victim .  
+}
+
+
+-------------------------------------------------------------------------------------------
+
+
+PREFIX homicide: <http://www.semanticweb.org/dvadher1/ontologies/2023/10/homicide-tracker-and-analyser#>
+
+SELECT ?month (COUNT(?incident) AS ?numIncidents)
+WHERE {
+  ?incident a homicide:Incident ;
+            homicide:hasMonth ?rawMonth .
+  BIND(REPLACE(?rawMonth,"^0*","") AS ?month)
+}
+GROUP BY ?month
+ORDER BY ?month
+
+-------------------------------------------------------------------------------------------
+
+PREFIX homicide: <http://www.semanticweb.org/dvadher1/ontologies/2023/10/homicide-tracker-and-analyser#>
+
+SELECT ?state (COUNT(?incident) AS ?numIncidents)
+WHERE {
+  ?incident a homicide:Incident ;
+            homicide:hasState ?state.
+}
+GROUP BY ?state
+ORDER BY ?state
+
+-------------------------------------------------------------------------------------------
+Find all the Black offenders.
+
+PREFIX homicide: <http://www.semanticweb.org/dvadher1/ontologies/2023/10/homicide-tracker-and-analyser#>
+SELECT ?offender
+WHERE {
+  ?offender a homicide:Offender ;
+   homicide:hasRace ?o1race .
+   FILTER(?o1race = "B")
+}
+

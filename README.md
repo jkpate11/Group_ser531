@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+SER-531-HomicideTrackerAndAnalyser
+=======================
+## Introduction
+Homicide tracker and analyser is a web application that allows users to view and analyse homicide data for United States. The app uses SPARQL queries to retrieve data from an RDF instance file created from homicide and hate crime databases. The app also allows users to view the homicide data in a tabular format.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Preprocessing of Dataset
+The databases were preprocessed using Python pandas (SourceCode/Data Preprocessing/combine.py) where unwanted data was filtered out and data was optimised, after which it was made into one combined database. The RDF instance file was created from this combined database using Celfie in Protege. The transformation rules used for creating the RDF instance file are present in the SourceCode/Data Preprocessing/rules.json file.
 
-## Available Scripts
+# Setting up the Fuseki Server in AWS EC2
+1. Create an AWS EC2 instance
+2. Install Java 8
+3. Download Apache Jena Fuseki
+4. Start Fuseki server
+5. Create a dataset
+6. Upload the RDF instance file to the dataset
 
-In the project directory, you can run:
 
-### `npm start`
+ssh -i key.pem ec2-user@54.191.86.183
+cd apache-jena-fuseki-4.10.0/
+java -jar fuseki-server.jar --update --mem /homicide_tracker_and_analyser (For creating the dataset)
+java -jar fuseki-server.jar --update --mem /homicide_tracker_and_analyser /homicide_tracker_and_analyser.owl (For uploading the RDF instance file to the dataset) or after fuseki server is up, add the data (rdf_final.rdf present in the ontologies folder).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+http://54.191.86.183:3030 (Fuseki endpoint)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Setting up the web application in AWS EC2 (React based)
+1. Create an AWS EC2 instance
+2. Install Node.js
+3. Install npm
+4. Install yarn
+5. Install git
+6. Clone the repository
+7. Install the dependencies
+8. Start the application
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+We have used React for the front end and Node.js for the backend. We are using the AWS hosted EC2 instance with Fuseki to respond to the SPARQL queries. The React application is hosted on localhost. The React application is configured to send the SPARQL queries to the Fuseki server. The Fuseki server responds to the SPARQL queries and the React application displays the results.

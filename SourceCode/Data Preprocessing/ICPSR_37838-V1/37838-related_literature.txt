@@ -1,0 +1,59 @@
+Bibliography
+Uniform Crime Reporting Program Data: Supplementary Homicide Reports,
+United States, 2018
+
+This bibliography includes published and unpublished works that are related 
+to ICPSR study 37838. It includes works that are based on primary
+or secondary analysis of the data, or which describe or critique those
+data or the collection methodology. 
+
+If you publish a work or know of other works that are based on these data,
+please send the complete citation and name of the ICPSR study used to:
+icpsr-biblio-notify@umich.edu 
+
+
+1. Abel, Meagan N., "News Coverage of Mass-Murder in the United States:
+2004-2018." Dissertation, Michigan State University, 2023.
+
+2. Boyle, Kaitlin M.; Jones, P'trice; Mancik, Ashley M., "Racialized
+backlash: A state-level analysis of Black women's homicide victimization by
+Black men, White men, and police." Crime and Delinquency. 2022,. DOI:
+10.1177/00111287221134922
+
+3. Campedelli, Gian M., "Explaining machine learning for predicting
+homicide clearance in the United States." Journal of Criminal Justice. Mar-
+Apr 2022, 79,. DOI: 10.1016/j.jcrimjus.2022.101898
+
+4. Duwe, Grant; Sanders, Nathan E.; Rocque, Michael; Fox, James A.,
+"Forecasting the severity of mass public shootings in the United States."
+Journal of Quantitative Criminology. 2022, 38, 385 - 423. DOI:
+10.1007/s10940-021-09499-5
+
+5. Fox, Kathleen A.; Stanek, Kayleigh A.; Harvey, Cassie L.; Sharp,
+Christopher; Imus-Nahsonhoya, Valaura, "Understanding the scope of missing
+and murdered indigenous peoples: A longitudinal examination of the
+understudied population of indigenous males in Arizona." Homicide Studies.
+In press 2023,. DOI: 10.1177/10887679231201602
+
+6. Kena, Grace; Truman, Jennifer L., "Trends and Patterns in Firearm
+Violence, 1993-2018." Special Report. NCJ 251663, Washington, DC: Bureau of
+Justice Statistics, Apr 2022.
+Full text PDF: https://bjs.ojp.gov/content/pub/pdf/tpfv9318.pdf
+
+7. Lu, Yunmei; Luo, Liying; Santos, Mateus R., "Social change and race-
+specific homicide trajectories: An age-period-cohort analysis." Journal of
+Research in Crime and Delinquency. in press 2022,. DOI:
+10.1177/00224278221129886
+Full text PDF: https://bjs.ojp.gov/content/pub/pdf/tpfv9318.pdf
+
+8. Mills, Samantha J.; Kivisto, Aaron J., "Firearm availability and
+parricide." Journal of Family Violence. in press 2022,. DOI:
+10.1007/s10896-022-00361-1
+Full text PDF: https://bjs.ojp.gov/content/pub/pdf/tpfv9318.pdf
+
+9. National Academies of Sciences, Engineering, and Medicine, "Racial
+disparities in victimization, offending, and involvement with the criminal
+justice system." In Reducing Racial Inequality in Crime and Justice:
+Science, Practice, and Policy. 45 - 116, Washington, DC: National Academies
+Press,2023. DOI: 10.17226/26705
+Full text PDF: https://bjs.ojp.gov/content/pub/pdf/tpfv9318.pdf
